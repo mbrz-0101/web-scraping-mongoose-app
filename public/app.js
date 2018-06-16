@@ -10,7 +10,7 @@ $.getJSON("/articles", function(data) {
 // Whenever someone clicks a p tag
 $(document).on("click", "#scrape-button", function() {
   // Empty the notes from the note section
-  $("#articles").empty();
+  $("#notes").empty();
   // Save the id from the p tag
   var thisId = $(this).attr("data-id");
 
@@ -21,14 +21,15 @@ $(document).on("click", "#scrape-button", function() {
   })
     // With that done, add the note information to the page
     .then(function(data) {
+      console.log(data);
       // The title of the article
-      $("#articles").append("<h2>" + data.title + "</h2>");
+      $("#notes").append("<h2>" + data.title + "</h2>");
       // An input to enter a new title
-      $("#articles").append("<input id='titleinput' name='title' >");
+      $("#notes").append("<input id='titleinput' name='title' >");
       // A textarea to add a new note body
-      $("#articles").append("<textarea id='bodyinput' name='body'></textarea>");
+      $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#articles").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
 
       // If there's a note in the article
       if (data.note) {
