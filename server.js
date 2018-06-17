@@ -38,6 +38,11 @@ mongoose.connect(MONGODB_URI);
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
+  db.Article.deleteMany({}).then(() => {
+    console.log("Articles deleted before scrape...");
+  }).catch(err => {
+    return res.json(err);
+  })
   // First, we grab the body of the html with request
   axios.get("https://www.nytimes.com/section/world?action=click&pgtype=Homepage&region=TopBar&module=HPMiniNav&contentCollection=World&WT.nav=page").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
