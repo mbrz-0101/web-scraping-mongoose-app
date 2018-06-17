@@ -8,7 +8,7 @@ $.getJSON("/articles", function(data) {
     `<div class="card">
       <div class="card-body">
         <a href="${data[i].link}"><h5 class="card-title">${data[i].title}</h5></a>
-        <p class="card-text">Short description of the article here</p>
+        <p class="card-text">${data[i].short}</p>
         <a class="btn btn-primary">Save Article</a>
       </div>
     </div>`);
