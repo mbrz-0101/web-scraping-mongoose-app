@@ -58,7 +58,8 @@ app.get("/scrape", function(req, res) {
         .children("a")
         .text();
       result.short = $(this)
-        .children(".summary")
+        .children("a")
+        .children("p")
         .text();
       result.link = $(this)
         .children("a")
